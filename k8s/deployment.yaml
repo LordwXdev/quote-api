@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quote-api
+  labels:
+    app: quote-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: quote-api
+  template:
+    metadata:
+      labels:
+        app: quote-api
+    spec:
+      containers:
+        - name: quote-api
+          image: localhost:32000/quote-api:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "128Mi"
+          livenessProbe:
+            httpGet:
+              path: /health.php?action=live
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health.php?action=ready
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 2
