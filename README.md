@@ -18,10 +18,15 @@ Deployed on MicroK8s with horizontal scaling, self-healing, and ingress routing.
 
 ## Project Structurequote-api/
 ├── app/
+
 │   ├── index.php
+
 │   ├── health.php
+
 │   ├── stress.php
+
 │   └── Dockerfile
+
 ├── k8s/
 │   ├── deployment.yaml
 │   ├── service.yaml
