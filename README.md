@@ -29,13 +29,21 @@ Deployed on MicroK8s with horizontal scaling, self-healing, and ingress routing.
 
 ├── k8s/
 │   ├── deployment.yaml
+
 │   ├── service.yaml
+
 │   ├── ingress.yaml
+
 │   └── hpa.yaml
+
 ├── scripts/
+
 │   ├── demo_traffic.sh
+
 │   ├── chaos_test.sh
+
 │   └── stress_test.sh
+
 └── README.md## How to Run
 See setup instructions below.
 
